@@ -1,5 +1,5 @@
 ---
-abstract: 'Allow hash default settings'
+abstract: 'Single declaration default settings'
 author:
   - 'Gene Boggs <gene@cpan.org>'
 build_requires:
@@ -25,7 +25,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Getopt-HashDefaults
   homepage: https://metacpan.org/release/Getopt-HashDefaults
   repository: git://github.com/ology/getopt-hashdefaults.git
-version: 0.01
+version: 0.02
 x_Dist_Zilla:
   perl:
     version: 5.010000

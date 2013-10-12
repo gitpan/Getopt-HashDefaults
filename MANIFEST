@@ -7,6 +7,8 @@ Makefile.PL
 README
 README.md
 dist.ini
+eg/less-simple.pl
+eg/simple.pl
 lib/Getopt/HashDefaults.pm
 t/00-compile.t
 t/00-load.t

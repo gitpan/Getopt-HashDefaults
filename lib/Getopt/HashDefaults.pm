@@ -3,9 +3,9 @@ BEGIN {
   $Getopt::HashDefaults::AUTHORITY = 'cpan:GENE';
 }
 
-# ABSTRACT: Allow hash default settings
+# ABSTRACT: Single declaration default settings
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 use strict;
 use warnings;
 
@@ -16,7 +16,15 @@ sub new {
     my $class = shift;
     my $self = {};
     bless $self, $class;
+    $self->_init(@_);
     return $self;
+}
+
+sub _init {
+    my ($self, @config) = @_;
+    $self->{parser} = Getopt::Long::Parser->new;
+    # Add Go::L configuration if any are passed in.
+    $self->{parser}->configure(@config) if @config;
 }
 
 
@@ -31,15 +39,14 @@ sub getoptions {
     # Recreate the options hash with "simpler" keys.
     $options = _simple_keys($options);
 
-    # Call the OO parent function.
-    my $o = Getopt::Long::Parser->new;
-    $o->getoptions($options, @specs);
+    # Call the OO "parent" function.
+    $self->{parser}->getoptions($options, @specs);
 
     # Return the simplified options.
     return $options;
 }
 
-# Build a "simpler" set of key-names for Getop::Long.
+# Build a "simpler" set of key-names for Go::L.
 sub _simple_keys {
     # Get the G::L spec=>default config.
     my $hash = shift;
@@ -72,35 +79,58 @@ __END__
 
 =head1 NAME
 
-Getopt::HashDefaults - Allow hash default settings
+Getopt::HashDefaults - Single declaration default settings
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
   use Getopt::HashDefaults;
-  my $config = {debug => 1};
   my $options = {
     'length=i' => 123.45,
     'help|?' => 0,
   };
-  my $o = Getopt::HashDefaults->new($config);
+  my @config = qw(debug);
+  my $o = Getopt::HashDefaults->new(@config);
   $options = $o->getoptions($options);
   print "Length: $options->{length}\n";
 
 =head1 DESCRIPTION
 
-C<Getopt::HashDefaults> uses L<Getopt::Long> to allow default settings without
-scalar references.
+C<Getopt::HashDefaults> allows default settings in a single hash of default
+values.  That is, no more redundant naming and scalar references.
 
-Use this module instead of L<Getopt::Long> and call L</getoptions()> with a
-reference to your default settings hash.
+So, instead of these eight statements and seven variables:
+
+  my $verbose = 0;
+  my $debug   = 0;
+  my $filter  = 1;
+  my $length  = 3.1415;
+  my $size    = 1_000_000;
+  my $colours = [qw(a b c)];
+  my %h = ();
+  GetOptions(\%h, 'verbose', 'debug', 'filter', 'length=i', 'size=i', 'colours=s@');
+
+C<Getopt::HashDefaults> lets you declare a label once and hold default values
+in a hash explicitly, instead of in separate scalars, three statements and
+two variables.
+
+  my $h = {
+    'verbose'    => 0,
+    'debug'      => 0,
+    'filter'     => 1,
+    'length=i'   => 3.1415,
+    'size=i'     => 1_000_000,
+    'colours=s@' => [qw(a b c)],
+  };
+  my $o = Getopt::HashDefaults->new;
+  $o->getoptions($h);
 
 =head1 NAME
 
-Getopt::HashDefaults - Allow hash default settings
+Getopt::HashDefaults - Single declaration default settings
 
 =head1 METHODS
 
@@ -108,7 +138,7 @@ Getopt::HashDefaults - Allow hash default settings
 
  $o = Getopt::HashDefaults->new;
 
-Create a new C<Getopt::Long::HashDefaults> instance.
+Create a new C<Getopt::HashDefaults> instance.
 
 =head2 getoptions()
 

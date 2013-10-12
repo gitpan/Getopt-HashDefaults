@@ -1,4 +1,8 @@
 Revision history for Getopt-HashDefaults
 
-0.01      2013-10-11 19:54:03 America/Los_Angeles
+0.02      2013-10-12 00:28:01 America/Los_Angeles
+    - Allowed configuration passing to Getopt::Long.
+    - Created a simple example script.
+
+0.01 2013-10-11 19:54:03 America/Los_Angeles
     - Built distro with dzil.

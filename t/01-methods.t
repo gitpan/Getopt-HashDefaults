@@ -13,3 +13,5 @@ is $options->{help}, 0, 'help';
 is $options->{length}, '123.45', 'length';
 
 done_testing();
+
+# TODO Test the ->new('debug') output
