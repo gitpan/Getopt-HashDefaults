@@ -1,6 +1,9 @@
 Revision history for Getopt-HashDefaults
 
-0.0201    2013-10-12 03:19:00 America/Los_Angeles
+0.0202    2013-10-12 06:02:56 America/Los_Angeles
+    - Finally realized how to do this with Getopt::Long.
+
+0.0201 2013-10-12 03:19:00 America/Los_Angeles
     - Fleshed out the eg/ scripts.
     - Made many documentation improvements.
 

@@ -19,18 +19,16 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "NAME" => "Getopt::HashDefaults",
-  "PREREQ_PM" => {
-    "Getopt::Long" => 0,
-    "strict" => 0,
-    "warnings" => 0
-  },
+  "PREREQ_PM" => {},
   "TEST_REQUIRES" => {
     "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
-    "Test::More" => 0
+    "Test::More" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  "VERSION" => "0.0201",
+  "VERSION" => "0.0202",
   "test" => {
     "TESTS" => "t/*.t"
   }

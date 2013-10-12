@@ -7,6 +7,8 @@ build_requires:
   IO::Handle: 0
   IPC::Open3: 0
   Test::More: 0
+  strict: 0
+  warnings: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -17,15 +19,12 @@ meta-spec:
   version: 1.4
 name: Getopt-HashDefaults
 requires:
-  Getopt::Long: 0
   perl: 5.006
-  strict: 0
-  warnings: 0
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Getopt-HashDefaults
   homepage: https://metacpan.org/release/Getopt-HashDefaults
   repository: git://github.com/ology/getopt-hashdefaults.git
-version: 0.0201
+version: 0.0202
 x_Dist_Zilla:
   perl:
     version: 5.010000

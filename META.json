@@ -30,10 +30,7 @@
       },
       "runtime" : {
          "requires" : {
-            "Getopt::Long" : "0",
-            "perl" : "5.006",
-            "strict" : "0",
-            "warnings" : "0"
+            "perl" : "5.006"
          }
       },
       "test" : {
@@ -41,7 +38,9 @@
             "File::Spec" : "0",
             "IO::Handle" : "0",
             "IPC::Open3" : "0",
-            "Test::More" : "0"
+            "Test::More" : "0",
+            "strict" : "0",
+            "warnings" : "0"
          }
       }
    },
@@ -58,7 +57,7 @@
          "web" : "https://github.com/ology/getopt-hashdefaults"
       }
    },
-   "version" : "0.0201",
+   "version" : "0.0202",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.010000"
