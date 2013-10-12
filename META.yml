@@ -25,7 +25,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Getopt-HashDefaults
   homepage: https://metacpan.org/release/Getopt-HashDefaults
   repository: git://github.com/ology/getopt-hashdefaults.git
-version: 0.02
+version: 0.0201
 x_Dist_Zilla:
   perl:
     version: 5.010000

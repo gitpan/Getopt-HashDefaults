@@ -58,7 +58,7 @@
          "web" : "https://github.com/ology/getopt-hashdefaults"
       }
    },
-   "version" : "0.02",
+   "version" : "0.0201",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.010000"

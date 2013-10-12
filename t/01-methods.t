@@ -14,4 +14,4 @@ is $options->{length}, '123.45', 'length';
 
 done_testing();
 
-# TODO Test the ->new('debug') output
+# TODO Test the ->new('debug') output but SKIP unless Capture::Tiny

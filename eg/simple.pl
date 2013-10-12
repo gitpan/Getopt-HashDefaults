@@ -8,21 +8,17 @@ use warnings;
 # $ perl eg/simple.pl
 # $ perl eg/simple.pl --help
 #
-
 use Getopt::HashDefaults;
 
-# Set our argument labels, specifications and default values.
+# Set argument labels, specs and defaults.
 my $options = { 'help|?' => 0, 'length=i' => 123.45 };
 
-# Set the optional configuration (documented in Go::L).
-my @config = ();#qw( debug );
+# Get a new command-line processor.
+my $o = Getopt::HashDefaults->new;
 
-# Instantiate a new Getop holder!
-my $o = Getopt::HashDefaults->new(@config);
-
-# Get arguments from the command-line based on defined option entries.
+# Get the command-line arguments given to this script.
 $options = $o->getoptions($options);
 
-# Show the value of our known entries.
-printf "Help: %d, Length: %f\n", $options->{help}, $options->{length};
+# Show the values of the options entries.
+print "Help: $options->{help}, Length: $options->{length}\n";
 

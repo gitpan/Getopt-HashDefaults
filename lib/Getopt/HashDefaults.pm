@@ -5,7 +5,7 @@ BEGIN {
 
 # ABSTRACT: Single declaration default settings
 
-our $VERSION = '0.02';
+our $VERSION = '0.0201';
 use strict;
 use warnings;
 
@@ -83,15 +83,12 @@ Getopt::HashDefaults - Single declaration default settings
 
 =head1 VERSION
 
-version 0.02
+version 0.0201
 
 =head1 SYNOPSIS
 
   use Getopt::HashDefaults;
-  my $options = {
-    'length=i' => 123.45,
-    'help|?' => 0,
-  };
+  my $options = { 'length=i' => 123.45, 'help|?' => 0 };
   my @config = qw(debug);
   my $o = Getopt::HashDefaults->new(@config);
   $options = $o->getoptions($options);
@@ -99,10 +96,10 @@ version 0.02
 
 =head1 DESCRIPTION
 
-C<Getopt::HashDefaults> allows default settings in a single hash of default
-values.  That is, no more redundant naming and scalar references.
+C<Getopt::HashDefaults> allows you to use a single hash of default values to
+define L<Getop::Long> specs, labels and values, in a single, flat hash.
 
-So, instead of these eight statements and seven variables:
+So, instead of these 8 statements and 7 variables:
 
   my $verbose = 0;
   my $debug   = 0;
@@ -113,9 +110,9 @@ So, instead of these eight statements and seven variables:
   my %h = ();
   GetOptions(\%h, 'verbose', 'debug', 'filter', 'length=i', 'size=i', 'colours=s@');
 
-C<Getopt::HashDefaults> lets you declare a label once and hold default values
-in a hash explicitly, instead of in separate scalars, three statements and
-two variables.
+C<Getopt::HashDefaults> lets you declare a spec, label and default value once.
+It lets you hold these default values in a hash explicitly, instead of separate
+scalars and references.  (Also: only 3 statements, 2 variables and less chars)
 
   my $h = {
     'verbose'    => 0,
@@ -126,7 +123,7 @@ two variables.
     'colours=s@' => [qw(a b c)],
   };
   my $o = Getopt::HashDefaults->new;
-  $o->getoptions($h);
+  $h = $o->getoptions($h);
 
 =head1 NAME
 
